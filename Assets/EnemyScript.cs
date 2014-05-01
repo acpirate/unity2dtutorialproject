@@ -7,17 +7,18 @@ using UnityEngine;
 /// </summary>
 public class EnemyScript : MonoBehaviour
 {
-	private WeaponScript[] weapon;
+	private WeaponScript[] weapons;
 	
 	void Awake()
 	{
 		// Retrieve the weapon only once
-		weapon = GetComponentsInChildren<WeaponScript>();
+		weapons = GetComponentsInChildren<WeaponScript>();
 	}
 	
 	void Update()
 	{
 		// Auto-fire
+		foreach(WeaponScript weapon in weapons)
 		if (weapon != null && weapon.CanAttack)
 		{
 			weapon.Attack(true);
